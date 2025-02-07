@@ -1,0 +1,45 @@
+.general-info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.general-info .box{
+    width: 250px;
+    height: 100px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.table{
+    width: 100%;
+}
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-container form input, .form-container select{
+    margin: 10px 0px;
+    border-radius: 5px;
+    width: 70%;
+}
+
+.form-container form button{
+    width: 70%;
+    background: #1F2937;
+    color: white;
+    border-radius: 5px;
+    height: 50px;
+}

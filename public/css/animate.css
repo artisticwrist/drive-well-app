@@ -1,0 +1,42 @@
+    /* SCROLL ANIMATION */
+
+    .hidden{
+        opacity: 0;
+        transition: all 1s;
+        filter: blur(5px);
+        transform: translateX(-10%);
+    }
+
+    .show{
+        filter: blur(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    /* slide up */
+
+    .hidden-slide{
+        opacity: 0;
+        transition: all 1s;
+        filter: blur(5px);
+        transform: translateY(50%);
+    }
+
+    .show-slide-up{
+        filter: blur(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    /* blur in */
+
+    .hidden-blur{
+        scale: 0.8;
+        transition: all 0.5s ease-out;
+        filter: blur(5px);
+    }
+
+    .show-blur{
+        filter: blur(0);
+        scale: 1;
+    }
