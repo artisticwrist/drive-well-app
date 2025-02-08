@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId(column: 'course_id')->constrained('courses');
+            $table->foreignId(column: 'course_id')->nullable()->constrained('courses');
             $table->foreignId('payment_id')->nullable()->constrained('payments');
             $table->integer('duration');
             $table->string('status')->index();

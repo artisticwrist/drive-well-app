@@ -16,8 +16,9 @@ class BookingService
 
     public function createBooking(User $user, CreateBookingDto $createBookingDto): Booking
     {
-        $course = Course::findOrFail($createBookingDto->courseId);
-        $amount = (int) $course->price * $createBookingDto->duration;
+        // $course = Course::findOrFail($createBookingDto->courseId);
+        $defaultPricePerBooking = 1000;
+        $amount = (int) $defaultPricePerBooking * $createBookingDto->duration;
         $reference = $reference = 'DW-' . now()->format('Ymd') . '-' . strtoupper(Str::random(6));
         $paymentDto = new PaymentDto(
             email: $user->email,
