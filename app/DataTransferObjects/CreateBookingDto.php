@@ -7,7 +7,7 @@ use App\Http\Requests\StoreBookingRequest;
 readonly class CreateBookingDto
 {
     public function __construct(
-        public int $courseId,
+        public ?int $courseId,
         public int $duration,
     ) {}
 

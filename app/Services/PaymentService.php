@@ -52,6 +52,10 @@ class PaymentService
         $payment = Payment::where('reference', $reference)->firstOrFail();
         if ($payment->status !== PaymentStatus::PAID)
         {
+            if ($payload['data']['amount'] !== $payment->amount)
+            {
+                throw new \Exception('paid amount is not equivalent to the amount to be paid');
+            }
             try {
                 DB::transaction(function () use($payment) {
                     $payment->update([

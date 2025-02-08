@@ -15,7 +15,14 @@ class BookingController extends Controller
     public function store(StoreBookingRequest $request)
     {
         $createBookingDto = CreateBookingDto::fromRequest($request);
-        $booking = $this->bookingService->createBooking($request->user(), $createBookingDto);
+        try {
+            $booking = $this->bookingService->createBooking($request->user(), $createBookingDto);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => "unable to create booking"
+            ]);
+        }
         return response()->json([
             'success' => true,
             'message' => 'Booking created successfully. Make payment',
