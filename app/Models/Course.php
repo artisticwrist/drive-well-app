@@ -18,4 +18,9 @@ class Course extends Model
         'level',
         'discount_price'
     ];
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'course_id');
+    }
 }

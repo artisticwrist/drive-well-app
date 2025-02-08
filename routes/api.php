@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +23,9 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('user')->group(function () {
     Route::post('create', [UserController::class, 'store']);
-    Route::get('data', [UserController::class, 'userData']); 
-    Route::put('{id}', [UserController::class, 'update']); 
-    Route::delete('{id}', [UserController::class, 'destroy']); 
+    Route::get('data', [UserController::class, 'userData']);
+    Route::put('{id}', [UserController::class, 'update']);
+    Route::delete('{id}', [UserController::class, 'destroy']);
 });
 
 
@@ -44,8 +46,11 @@ Route::prefix('auth')->group(function () {
 
 
 Route::prefix('payment')->group(function () {
+    Route::get('webhook', [PaymentController::class, 'handleWebhook'])->name('payment.webhook');
     Route::post('make_payment', [PaystackController::class, 'make_payment']);
     Route::get('payment_callback', [PaystackController::class, 'payment_callback'])->name('callback');
     Route::get('verify_payment/{reference}', [PaystackController::class, 'verify_payment']);
 });
+
+Route::post('bookings', [BookingController::class, 'store'])->name('booking.store');
 
